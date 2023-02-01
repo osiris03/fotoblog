@@ -19,8 +19,8 @@ def login_page(request):
                 password = form.cleaned_data['password'],
             )
             if user is not None:
-                login(request,user)
-                massege = f'Bonjour, {user.username}! Vous êtes connecté.'
+                login(request, user)
+                return redirect('home')
             else:
                 message = 'identifiants invalides'
     return render(request,'authentication/login.html',context={'form':form,'message':message})
