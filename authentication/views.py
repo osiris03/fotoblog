@@ -1,12 +1,12 @@
 
 # import des fonction login et authenticate
-from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import render, redirect
-from django.views.generic import View
-from . import forms \
+from django.contrib.auth import logout # login, authenticate, 
+from django.shortcuts import redirect #render, 
+#from django.views.generic import View
+#from . import forms \
 
 # view base on class 
-class LoginPage(View):
+"""class LoginPage(View):
     form_class = forms.LoginForm #class formulaire de connection
     template_name = 'authentication/login.html' # chemin du gabarie utiliser par la vue
     def get(self, request):
@@ -29,7 +29,7 @@ class LoginPage(View):
                 message = 'identifiants invalides'
             return render(request,self.template_name,context={'form':form,'message':message})
 
-
+"""
 # class base on function 
 
 def logout_user(request):
