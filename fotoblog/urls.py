@@ -23,20 +23,16 @@ import blog.views
 urlpatterns = [
     path('admin/', admin.site.urls),
 # url views base on function 
-    #path('',authentication.views.login_page,name='login'),
+    path('',authentication.views.login_page,name='login'),
 # url views base on class 
     #path('',authentication.views.LoginPage.as_view(), name='login'),
 # url base sur des vue generic 
-    path('',LoginView.as_view(
-        template_name ='authentication/login.html',
-        redirect_authenticated_user = True
-    ), name='login'),
+ #   path('',LoginView.as_view(
+ #       template_name ='authentication/login.html',
+  #      redirect_authenticated_user = True
+  #  ), name='login'),"""
 
-    path('',LoginView.as_view(
-    template_name ='authentication/login.html',
-    redirect_authenticated_user = True
-    ), name='login'),
-
+  
  #   path('logout/', authentication.views.logout_user, name='logout'),
      path('logout/', LogoutView.as_view(), name='logout'),
     
@@ -46,5 +42,6 @@ urlpatterns = [
         template_name='authentication/password_change_done.html'),name = 'password_change_done'),
     path('home/', blog.views.home, name='home'),
 
-    path('singup', authentication.views.singup_page, name='signup'),
+    path('signup/', authentication.views.signup_page, name='signup'),
+    path('photo/upload', blog.views.photo_upload, name='photo_upload')
 ]

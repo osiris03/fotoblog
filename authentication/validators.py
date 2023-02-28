@@ -13,12 +13,12 @@ class ContainsLetterValidator:
 
 
 class ContainsNumberValidator:
-    def Validate(self,password,user=None):
-        if not any(charater.is_digit() for charater in password):
+    def validate(self,password,user=None):
+        if not any(char.isdigit() for char in password):
             raise ValidationError(
                 'le mot de passe doit contenir au moins un chiffre',
                 code = 'password_no_number'
             )
     
-    def get_help_number(self):
-        return 'Votre mot de passe doit contenir au moins un nombre'
+    def get_help_text(self):
+        return 'Votre mot de passe doit contenir au moins un nombre.'

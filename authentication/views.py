@@ -1,6 +1,6 @@
 
 # import des fonction login et authenticate
-from django.contrib.auth import logout # login, authenticate, 
+from django.contrib.auth import logout, login, authenticate
 from django.shortcuts import redirect, render
 from django.conf import settings
 #from django.views.generic import View
@@ -37,7 +37,6 @@ def logout_user(request):
     logout(request)
     return redirect('login')
 
-"""
 def login_page(request):
     form = forms.LoginForm()
     message = ' '
@@ -54,13 +53,15 @@ def login_page(request):
             else:
                 message = 'identifiants invalides'
     return render(request,'authentication/login.html',context={'form':form,'message':message})
-"""
-def singup_page(request):
-    form = forms.SingupForm()
+
+
+def signup_page(request):
+    form = forms.SignupForm()
     if request.method == 'POST':
-        form = forms.SingupForm(request.POST)
-        if form_is_valid():
+        form = forms.SignupForm(request.POST)
+        if form.is_valid():
             user = form.save()
+            # auto-login user
             login(request, user)
             return redirect(settings.LOGIN_REDIRECT_URL)
-    return render(request, 'authentication/signup.html', context = {'form':form}) 
+    return render(request, 'authentication/signup.html', context={'form': form})
