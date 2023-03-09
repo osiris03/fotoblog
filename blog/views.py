@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from . import models
 
 # Create your views here.
 @login_required
@@ -14,8 +15,7 @@ def photo_upload(request):
     return render(request,'blog/photo_upload.html', context={'form':form})
 
 
-
-
 @login_required
 def home(request):
-    return render(request,'blog/home.html')
+    photos = models.Photo.objects.all()
+    return render(request, 'blog/home.html', context={'photos':photos})

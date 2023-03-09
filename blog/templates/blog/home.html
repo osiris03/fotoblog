@@ -1,4 +1,9 @@
 {% extends 'base.html' %}
 {% block content %}
-   <p> You are connect ! </p>
+   <h2>Photos</h2>
+
+   {% for photo in photos %}
+       <img src="{{ photo.image.url }}">
+       <p>{{ photo.capion }}</p>
+   {% endfor %}
 {% endblock content %}
